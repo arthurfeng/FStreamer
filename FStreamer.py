@@ -7,7 +7,7 @@ Created on 2014-7-3
 import os
 from src import ffmpeg, segmenter
 
-VIDEOFORMAT = [".ts", ".mp4"]
+VIDEOFORMAT = [".ts", ".mp4", ".mkv"]
 
 root = raw_input("Input Your Contents Or Folder Name: ")
             
@@ -28,4 +28,5 @@ if __name__ == '__main__':
                 name, extension = os.path.splitext(fname)
                 if extension in VIDEOFORMAT:
                     print "Transcoding %s to HLS..." % fname
-                    run("%s\%s" % (dirName, fname))
+                    #run("%s\%s" % (dirName, fname))
+                    run(os.path.join(dirName, fname))

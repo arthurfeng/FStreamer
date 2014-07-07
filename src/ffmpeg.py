@@ -22,14 +22,14 @@ class FFMPEG(object):
     def cmd(self, filepath):
         
         dirname, filename = os.path.split(filepath)
-        filename, extension = filename.split(".")
+        filename, extension = os.path.splitext(filename)
         if os.path.exists("mpegts\%s.ts" % filename):
             return ""
         else:
             return '''%s -i "%s" -vcodec h264 -acodec aac -strict -2 "%s\%s.ts"''' % (FFMPEGFOLDER, filepath, TSFOLDER, filename)
     
     def run(self, cmd):
-        
+
         result = os.system(cmd)
     
 def ffmpeg(filepath):

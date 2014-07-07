@@ -21,7 +21,7 @@ class Segmenter(object):
     def cmd(self, filepath):
         
         dirname, filename = os.path.split(filepath)
-        filename, extension = filename.split(".")
+        filename, extension = os.path.splitext(filename)
         if os.path.exists("m3u8\%s.m3u8" % filename):
             cmd = ""
         else:
